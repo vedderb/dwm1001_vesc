@@ -2,4 +2,3 @@ _build
 .cproject
 .project
 .settings
-hex/*

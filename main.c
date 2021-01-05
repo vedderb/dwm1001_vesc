@@ -1,5 +1,5 @@
 /*
-	Copyright 2019 Benjamin Vedder	benjamin@vedder.se
+	Copyright 2019 - 2021 Benjamin Vedder	benjamin@vedder.se
 
 	This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -550,19 +550,6 @@ static void nrf_timer_handler(void *p_context) {
 
 int main(void) {
 	nrf_gpio_cfg_output(LED_PIN);
-
-#ifdef NRF52840_XXAA
-	nrf_drv_clock_init();
-
-	static const app_usbd_config_t usbd_config = {
-			.ev_state_proc = usbd_user_ev_handler
-	};
-
-	app_usbd_serial_num_generate();
-	app_usbd_init(&usbd_config);
-	app_usbd_class_inst_t const * class_cdc_acm = app_usbd_cdc_acm_class_inst_get(&m_app_cdc_acm);
-	app_usbd_class_append(class_cdc_acm);
-#endif
 
 	uart_init();
 	app_timer_init();
